@@ -1,51 +1,59 @@
 #include<stdio.h>
 
-void CountingBases(char *alphabet) {
+void ReverseElements(char *alphabet) {
 
-  int i;
-  int adenine = 0;
-  int cytosine = 0;
-  int guanine = 0;
-  int uracyl = 0;
-       
-  for(i = 0; alphabet[i] != EOF; ++i) {
+  int i, n;
+  char *temp_array;
+
+  for(i = 0; alphabet[i] != 0; ++i) {
   
     if(alphabet[i] == 'A') {
       alphabet[i] = 'T';
+      continue;
     }
     if(alphabet[i] == 'C'){
-      alphabet[i] = 'A';
+      alphabet[i] = 'G';      
+      continue;
     }
     if(alphabet[i] == 'G') { 
-      alphabet[i] = 'C';
+      alphabet[i] = 'C';      
+      continue;
     }
     if(alphabet[i] == 'T') {
-      alphabet[i] = 'A';
+      alphabet[i] = 'A';      
+      continue;
     } 
-    /*    
-    switch(alphabet[i])  { 
-    case 'A': ++adenine;
-      break;
-    case 'C': ++cytosine;
-      break;
-    case 'G': ++guanine;
-      break;
-    default: ++uracyl;
-      break;
-        
-    }
-    */ 
+
+  } 
+  for(i = 0; *(alphabet + i) != 0; ++i) {
+  printf("%d", i);
   }
-  printf("ACGU: %d %d %d %d \n", adenine, cytosine, guanine, uracyl);
+  n = i;
+  printf("\n %d \n", n);
+
+  temp_array = malloc(n*sizeof(char));
+
+  for(i = 0; i >= n; i++) {
+    
+    temp_array[i] = alphabet[i];
+    alphabet[i] = alphabet[n - i];
+    alphabet[n - i] = temp_array[i];
+
+  }
+  free(temp_array);
+ 
+  printf("%s", alphabet);
+
 }
 
 
-int main() {
-  int i;
 
-  char m[] = "UCCCGCUAUCACGGAAAUGUCCAAAUUAGCUUUGACAUCAUGAGAUUAAUCCAUAUCGUGUAUGAGAGGUAGGCUCUGACGGAAUUCCACUCAACUGCUUAACACAGCGCGCUGCACUCGGAGGCACGCGGCCGUUUAGCGUUUUACAUUCACACAUCCCGUGCAGAUCCAGAGGUCCGCUAAACUAGACUUAAAGUUCCGUACUAGGCCCCACAGAUGAAAUGGGCUAGCAAUAGAAUAGUUUGGUGAUGACGAUUGGUUGGUCCGCGUCGGCGUUCCACGCCCUCAAAUUUCGGUCAAUACUGCACAGUAUUGUCAGAUUUUGAAUUCAAUCUCUACACCUCUAUGACUAGAACACUCCGUGACGCGAUUAUGUUUCACAAAGGAUUACUUCGAGGGAUACGUGACACAGCGGCCAGACUCUUCGCGAACACGGCGCGUAUCCACGCGCGAGAUAUCUUUCAGAGGGAGUAUCAAAAAUCUAACUCAAGUUAGUCCCAAGCUGUCUGUAAUGUCAUUCGUUCAAAGCCAAAAGUUGUGAACACUGGCAAAGGUCUGAUUACCCCGGGCGCCCCUUGGUGUCGAGAGUUUUAGCCACUAUGGAUUUGUUCGUCGAAAAACACAGCUAAGAGUGGGAUCUCGUAGCUGCUUCGUAGCACUUUAAUCGCUGGCUACCUUCCUAGCUGCGCGGCUAGAGUAAUGCUGUACGCCGGGUACUUGACCGGACUUGUCGUCGAGUCUUGGUAAUGGAGCGAUCAGGGCCUGUAAAUUCGCUCAAUAACAUUUAUUGACACGGUUUUCUCUGCCAGAGGGUAAGUCCAGCGAGGGGAGAAGGCCAGCCUACUCAGCCUGCAGCGAUGUUGUUUAGGUCAUCCUGUCUACGGGUCCCUGCAGUCACUCAGCAGUAUUGGUGGUGGGGAAUGUGCCUUAUUCCUUAUUGGUCGCACUCCGGAAAUGGAUAUGGAGCUUGCCACAGA";  
-  //  printf("%s",m[2]);
-  CountingBases(m);
+int main() {
+
+  char m[] = "AAAACCCGGT";  
+
+  ReverseElements(m);
+  
 
  return 0;
 }

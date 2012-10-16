@@ -8,7 +8,7 @@ void CountingBases(char *alphabet) {
   int guanine = 0;
   int uracyl = 0;
        
-  for(i = 0; alphabet[i] != EOF; ++i) {
+  for(i = 0; alphabet[i] != 0; ++i) {
   
     if(alphabet[i] == 'A') {
       ++adenine;
@@ -22,19 +22,7 @@ void CountingBases(char *alphabet) {
     if(alphabet[i] == 'U') {
       ++uracyl;
     } 
-    /*    
-    switch(alphabet[i])  { 
-    case 'A': ++adenine;
-      break;
-    case 'C': ++cytosine;
-      break;
-    case 'G': ++guanine;
-      break;
-    default: ++uracyl;
-      break;
-         
-    }
-    */ 
+  
   }
   printf("ACGU: %d %d %d %d \n", adenine, cytosine, guanine, uracyl);
 }
