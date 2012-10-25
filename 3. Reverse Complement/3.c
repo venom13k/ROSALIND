@@ -2,8 +2,8 @@
 
 void ReverseElements(char *alphabet) {
 
-  int i, n;
-  char *temp_array;
+  int i, n = 0;
+  char temp = 0;
 
   for(i = 0; alphabet[i] != 0; ++i) {
   
@@ -25,28 +25,25 @@ void ReverseElements(char *alphabet) {
     } 
 
   } 
-  for(i = 0; *(alphabet + i) != 0; ++i) {
-  printf("%d", i);
-  }
+
+  
+
   n = i;
-  printf("\n %d \n", n);
-
-  temp_array = malloc(n*sizeof(char));
-
+  printf(" %i \n", n);
   for(i = 0; i >= n; i++) {
-    
-    temp_array[i] = alphabet[i];
+    printf(" %c \n", temp);
+    temp = alphabet[i];
     alphabet[i] = alphabet[n - i];
-    alphabet[n - i] = temp_array[i];
+    alphabet[n - i] = temp;
+    printf(" %c \n", temp);
 
   }
-  free(temp_array);
  
-  printf("%s", alphabet);
+ 
+  printf("%s \n", alphabet);
+
 
 }
-
-
 
 int main() {
 
