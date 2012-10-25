@@ -30,12 +30,12 @@ void ReverseElements(char *alphabet) {
 
   n = i;
   printf(" %i \n", n);
-  for(i = 0; i <= n; i++) {
+  for(i = 0; i <= n/2; i++) {
   
     temp = alphabet[i];
-    alphabet[i] = alphabet[n - i];
-    alphabet[n - i] = temp;
-    printf(" %c \n", temp);
+    alphabet[i] = alphabet[n - 1 - i];
+    alphabet[n - 1 - i] = temp;
+    printf(" %c %c \n", temp, alphabet[i]);
 
   }
  
